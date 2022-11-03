@@ -54,3 +54,5 @@ npm run android
 ## How to contribute
 
 If you want to contribute to the code, you can create a new branch and create a pull request.</br>
+
+For information on how to run it locally, see the [How to install from source](#from-source) section.
