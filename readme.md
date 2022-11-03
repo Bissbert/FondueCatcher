@@ -34,3 +34,23 @@ You can then install the IPA file on your device.
 
 To install the game from source, you need to have [Node.js](https://nodejs.org/en/) installed.</br>
 You can then clone the repository and run the following commands:
+
+```bash
+## Install dependencies for npm
+npm install
+
+## install the pods
+cd ios
+pod install
+cd ..
+
+## run the app on ios simulator
+npm run ios
+
+## run the app on android simulator
+npm run android
+```
+
+## How to contribute
+
+If you want to contribute to the code, you can create a new branch and create a pull request.</br>
