@@ -22,12 +22,12 @@ As this project is a prototype, it is not yet available on the Google Play Store
 
 ### Android
 
-To install the game on an Android device, you can download the APK file from the [releases](./releases/) page.</br>
+To install the game on an Android device, you can download the APK file from the [releases](https://github.com/Bissbert/FondueCatcher/releases) page.</br>
 You can then install the APK file on your device.
 
 ### iOS
 
-To install the game on an iOS device, you can download the IPA file from the [releases](./releases/) page.</br>
+To install the game on an iOS device, you can download the IPA file from the [releases](https://github.com/Bissbert/FondueCatcher/releases) page.</br>
 You can then install the IPA file on your device.
 
 ### From source
