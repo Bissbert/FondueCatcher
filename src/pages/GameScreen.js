@@ -18,6 +18,7 @@ export default class GameScreen extends Component<{
     this.props.setBackground(colors.grassGreen);
   }
 }
+
 const styles = {
   container: {
     flex: 1,
