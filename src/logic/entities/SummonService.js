@@ -49,7 +49,7 @@ const generateEntity = () => {
   const x =
     Math.floor(Math.random() * (getGameScreenWidth() - FALLING_RADIUS * 2)) +
     FALLING_RADIUS;
-  const y = 100;
+  const y = 120;
   const position = [x, y];
   return new ItemEntity(
     position,
