@@ -7,7 +7,7 @@ export const FALLING_RADIUS = 20;
 export default class FallingItem extends PureComponent<{
   position?: [number, number],
   radius?: number,
-  itemType: ItemType,
+  itemType?: ItemType,
 }> {
   render() {
     const x = this.props.position[0] - this.props.radius / 2;
