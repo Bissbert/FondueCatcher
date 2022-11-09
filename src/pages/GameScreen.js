@@ -46,10 +46,14 @@ export default class GameScreen extends Component<{
                 radius: POT_RADIUS,
                 renderer: <Pot />,
               },
-            bread1: {
-              position: [100, 200],
-              renderer: <FallingBread />,
-            },
+              bread1: {
+                position: [100, 200],
+                renderer: <FallingBread />,
+              },
+              bread2: {
+                position: [50, 200],
+                renderer: <FallingBread />,
+              },
             }}
             running={this.state.running}
           />
