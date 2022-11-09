@@ -10,7 +10,7 @@ import {
   setGameScreenHeight,
   setGameScreenWidth,
 } from '../logic/gameScreenSize';
-import { FallDown } from '../logic/entities/FallDown';
+import { FallDown, setPointManagerFallDown } from '../logic/entities/FallDown';
 import FallingBread from '../components/entities/FallingBread';
 
 export default class GameScreen extends Component<{
@@ -25,6 +25,7 @@ export default class GameScreen extends Component<{
       running: true,
       points: this.pointManagement.points,
     };
+    setPointManagerFallDown(this.pointManagement);
   }
 
   render() {

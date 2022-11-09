@@ -1,4 +1,7 @@
 import { getGameScreenHeight } from '../gameScreenSize';
+import PointManagement from '../PointManagement';
+
+let pointManager: PointManagement;
 
 const FallDown = entities => {
   const keys = Object.keys(entities);
@@ -17,6 +20,7 @@ const FallDown = entities => {
         entity.position[1] > getGameScreenHeight() - 100
       ) {
         delete entities[key];
+        pointManager.incrementPoints(-1);
       }
     }
   });
@@ -24,4 +28,8 @@ const FallDown = entities => {
   return entities;
 };
 
-export { FallDown };
+const setPointManagerFallDown = (pointManagerInstance: PointManagement) => {
+  pointManager = pointManagerInstance;
+};
+
+export { FallDown, setPointManagerFallDown };
