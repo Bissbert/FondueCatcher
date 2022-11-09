@@ -56,3 +56,11 @@ npm run android
 If you want to contribute to the code, you can create a new branch and create a pull request.</br>
 
 For information on how to run it locally, see the [How to install from source](#from-source) section.
+
+### Frameworks
+
+This project uses the following frameworks:
+
+- [React Native](https://reactnative.dev/)
+- [React Native Game Engine](https://github.com/bberak/react-native-game-engine)
+- [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
