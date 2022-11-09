@@ -1,4 +1,4 @@
-import { getRadius } from '../../components/entities/Pot';
+import { getPotWidth } from '../../components/entities/Pot';
 import { getGameScreenWidth } from '../gameScreenSize';
 
 const MovePot = (entities, { touches }) => {
@@ -16,20 +16,20 @@ const MovePot = (entities, { touches }) => {
 
 const updatePot = (pot, t) => {
   const newPos = pot.position[0] + t.delta.pageX;
-  if (newPos >= getRadius()) {
-    if (newPos >= getGameScreenWidth() - getRadius() * 3) {
+  if (newPos >= getPotWidth()) {
+    if (newPos >= getGameScreenWidth() - getPotWidth() * 3) {
       console.log(
         'is greater than game screen size, so set to game screen size:',
-        getGameScreenWidth() - getRadius() * 3,
+        getGameScreenWidth() - getPotWidth() * 3,
       );
-      pot.position[0] = getGameScreenWidth() - getRadius() * 3;
+      pot.position[0] = getGameScreenWidth() - getPotWidth() * 3;
     } else {
       console.log('moving pot from', pot.position[0], 'to', newPos);
       pot.position = [newPos];
     }
   } else {
-    console.log('moving pot to', getRadius());
-    pot.position = [getRadius()];
+    console.log('moving pot to', getPotWidth());
+    pot.position = [getPotWidth()];
   }
 };
 

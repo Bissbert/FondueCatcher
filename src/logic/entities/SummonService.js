@@ -55,6 +55,7 @@ const generateEntity = () => {
     position,
     <FallingItem />,
     FALLING_RADIUS,
+    randomVelocity(),
     randomItemType(),
   );
 };
@@ -65,6 +66,14 @@ const generateEntity = () => {
 const resetSummonTime = () => {
   nextSummonTime =
     Date.now() + Math.random() * (TIME_MAX - TIME_MIN) + TIME_MIN;
+};
+
+/**
+ * A function that returns a random velocity
+ * @returns {number}
+ */
+const randomVelocity = () => {
+  return Math.random() * 0.3 + 1;
 };
 
 export default SummonService;
