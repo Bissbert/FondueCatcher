@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 const RADIUS = 20;
 
-class FallingBread extends PureComponent {
+class FallingBread extends PureComponent<{ position?: [number, number] }> {
   render() {
     const x = this.props.position[0] - RADIUS / 2;
     const y = this.props.position[1] - RADIUS / 2;

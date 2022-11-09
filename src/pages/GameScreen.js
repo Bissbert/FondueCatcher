@@ -32,10 +32,17 @@ export default class GameScreen extends Component<{
         />
         <GameEngine
           style={styles.gameContainer}
-          systems={[MovePot,FallDown]}
+          systems={[MovePot, FallDown]}
           entities={{
             pot: { position: [100], renderer: <Pot /> },
-            1: { position: [40, 200], renderer: <FallingBread /> },
+            bread1: {
+              position: [50, 100],
+              renderer: <FallingBread />,
+            },
+            bread2: {
+              position: [100, 200],
+              renderer: <FallingBread />,
+            },
           }}
           running={this.state.running}
         />
