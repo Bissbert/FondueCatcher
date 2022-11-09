@@ -30,7 +30,6 @@ const SummonService = entities => {
 };
 
 const resetSummonTime = () => {
-  //set the new summon time to be a random number between 1 and 4 seconds
   nextSummonTime =
     Date.now() + Math.random() * (TIME_MAX - TIME_MIN) + TIME_MIN;
 };
