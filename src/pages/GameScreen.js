@@ -6,7 +6,7 @@ import PointCounter from '../components/PointCounter';
 import PointManagement from '../logic/PointManagement';
 import { MovePot } from '../logic/entities/PotMovement';
 import Pot, { POT_RADIUS } from '../components/entities/Pot';
-import { setGameScreenSize } from '../logic/gameScreenSize';
+import { setGameScreenHeight, setGameScreenWidth } from '../logic/gameScreenSize';
 import { FallDown } from '../logic/entities/FallDown';
 import FallingBread from '../components/entities/FallingBread';
 
@@ -34,8 +34,9 @@ export default class GameScreen extends Component<{
         <View
           style={styles.gameContainer}
           onLayout={event => {
-            const { width } = event.nativeEvent.layout;
-            setGameScreenSize(width);
+            const { width, height } = event.nativeEvent.layout;
+            setGameScreenWidth(width);
+            setGameScreenHeight(height);
           }}>
           <GameEngine
             style={styles.gameContainer}
