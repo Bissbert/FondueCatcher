@@ -4,6 +4,8 @@ import { colors } from '../colors';
 import { GameEngine } from 'react-native-game-engine';
 import PointCounter from '../components/PointCounter';
 import PointManagement from '../logic/PointManagement';
+import { FallDown } from '../logic/entities/FallDown';
+import { FallingBread } from '../components/entities/FallingBread';
 
 export default class GameScreen extends Component<{
   setBackground: (color: string) => void,
@@ -26,7 +28,17 @@ export default class GameScreen extends Component<{
           points={this.state.points}
           style={styles.pointContainer}
         />
-        <GameEngine style={styles.gameContainer} systems={[]} entities={{}} />
+        <GameEngine
+          style={styles.gameContainer}
+          systems={[FallDown]}
+          entities={{
+            1: { position: [40, 200], renderer: <FallingBread /> },
+            2: { position: [40, 200], renderer: <FallingBread /> },
+            3: { position: [40, 200], renderer: <FallingBread /> },
+            4: { position: [40, 200], renderer: <FallingBread /> },
+            5: { position: [40, 200], renderer: <FallingBread /> },
+          }}
+        />
       </View>
     );
   }
