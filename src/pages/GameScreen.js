@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { colors } from '../colors';
-import { GameEngine } from 'react-native-game-engine';
+import { DefaultTimer, GameEngine } from 'react-native-game-engine';
 import PointCounter from '../components/PointCounter';
 import PointManagement from '../logic/PointManagement';
 import { MovePot } from '../logic/entities/PotMovement';
@@ -12,12 +12,13 @@ import {
 } from '../logic/gameScreenSize';
 import { FallDown, setPointManagerFallDown } from '../logic/entities/FallDown';
 import FallingBread from '../components/entities/FallingBread';
+import SummonService from '../logic/entities/SummonService';
 
 export default class GameScreen extends Component<{
   setBackground: (color: string) => void,
 }> {
   pointManagement;
-
+  timer: DefaultTimer = new DefaultTimer();
   constructor(props) {
     super(props);
     this.pointManagement = new PointManagement(this.setState.bind(this));
@@ -25,6 +26,7 @@ export default class GameScreen extends Component<{
       running: true,
       points: this.pointManagement.points,
     };
+    //set the timer to 90fps
     setPointManagerFallDown(this.pointManagement);
   }
 
@@ -44,20 +46,12 @@ export default class GameScreen extends Component<{
           }}>
           <GameEngine
             style={styles.gameContainer}
-            systems={[MovePot, FallDown]}
+            systems={[MovePot, FallDown, SummonService]}
             entities={{
               pot: {
                 position: [100, 100],
                 radius: POT_RADIUS,
                 renderer: <Pot />,
-              },
-              bread1: {
-                position: [100, 200],
-                renderer: <FallingBread />,
-              },
-              bread2: {
-                position: [50, 200],
-                renderer: <FallingBread />,
               },
             }}
             running={this.state.running}

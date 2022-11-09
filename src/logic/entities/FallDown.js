@@ -12,8 +12,6 @@ const FallDown = entities => {
     const entity = entities[key];
     if (entity && entity.position) {
       entity.position = [entity.position[0], entity.position[1] + 1];
-      console.log(key, entities[key]);
-
       //check if entity is out of bounds
       if (
         !isNaN(getGameScreenHeight()) &&
