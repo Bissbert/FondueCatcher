@@ -5,7 +5,7 @@ import { DefaultTimer, GameEngine } from 'react-native-game-engine';
 import PointCounter from '../components/PointCounter';
 import PointManagement from '../logic/PointManagement';
 import { MovePot } from '../logic/entities/PotMovement';
-import Pot, { POT_RADIUS } from '../components/entities/Pot';
+import Pot, { POT_HEIGHT, POT_RADIUS, POT_WIDTH } from '../components/entities/Pot';
 import { setGameScreenHeight, setGameScreenWidth } from '../logic/gameScreenSize';
 import { FallDown } from '../logic/entities/FallDown';
 import SummonService from '../logic/entities/SummonService';
@@ -45,7 +45,8 @@ export default class GameScreen extends Component<{
             entities={{
               pot: {
                 position: [100, 100],
-                radius: POT_RADIUS,
+                width: POT_WIDTH,
+                height: POT_HEIGHT,
                 renderer: <Pot />,
               },
             }}

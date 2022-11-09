@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import { ItemType } from '../../logic/entities/ItemEntity';
 
-export const FALLING_RADIUS = 20;
+export const FALLING_RADIUS = 30;
 
 export default class FallingItem extends PureComponent<{
   position?: [number, number],
@@ -19,11 +19,16 @@ export default class FallingItem extends PureComponent<{
           {
             left: x,
             top: y,
-            backgroundColor:
-              this.props.itemType.name === 'bread' ? 'pink' : 'blue',
           },
-        ]}
-      />
+        ]}>
+        <Image
+          source={this.props.itemType.image}
+          style={{
+            width: this.props.radius * 2,
+            height: this.props.radius * 2,
+          }}
+        />
+      </View>
     );
   }
 }

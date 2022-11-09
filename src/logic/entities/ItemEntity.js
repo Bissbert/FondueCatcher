@@ -13,26 +13,29 @@ class Entity {
 
 class ItemEntity extends Entity {
   radius: number;
+  velocity: number;
   itemType: ItemType;
 
   constructor(
     position: [number, number],
     renderer: FallingItem,
     radius: number,
+    velocity: number,
     itemType: ItemType,
   ) {
     super(position, renderer);
     this.radius = radius;
+    this.velocity = velocity;
     this.itemType = itemType;
   }
 }
 
 class ItemType {
   name: string;
-  image: string; //name of the file in the image dir
+  image; //name of the file in the image dir
   points: number;
 
-  constructor(name: string, image: string, points: number) {
+  constructor(name: string, image, points: number) {
     this.name = name;
     this.image = image;
     this.points = points;
@@ -40,8 +43,8 @@ class ItemType {
 }
 
 const itemTypes = {
-  bread: new ItemType('bread', 'bread.png', 1),
-  fork: new ItemType('fork', 'fork.png', -1),
+  bread: new ItemType('bread', require('../../img/bread.png'), 1),
+  fork: new ItemType('fork', require('../../img/fork.png'), -1),
 };
 
 export { ItemEntity, ItemType, itemTypes };
