@@ -7,7 +7,7 @@ import PointManagement from '../logic/PointManagement';
 import { MovePot } from '../logic/entities/PotMovement';
 import Pot from '../components/entities/Pot';
 import { FallDown } from '../logic/entities/FallDown';
-import { FallingBread } from '../components/entities/FallingBread';
+import FallingBread from '../components/entities/FallingBread';
 
 export default class GameScreen extends Component<{
   setBackground: (color: string) => void,

@@ -3,16 +3,18 @@ import { StyleSheet, View } from 'react-native';
 
 const RADIUS = 20;
 
-class FallingBread extends PureComponent<{ position?: [number, number] }> {
+export default class FallingBread extends PureComponent<{
+  position?: [number, number],
+}> {
   render() {
     const x = this.props.position[0] - RADIUS / 2;
     const y = this.props.position[1] - RADIUS / 2;
-    return <View style={[styles.bread, { left: x, top: y }]} />;
+    return <View style={[styles.breadStyle, { left: x, top: y }]} />;
   }
 }
 
 const styles = StyleSheet.create({
-  bread: {
+  breadStyle: {
     borderColor: '#CCC',
     borderWidth: 4,
     borderRadius: RADIUS * 2,
@@ -22,5 +24,3 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
 });
-
-export { FallingBread };
