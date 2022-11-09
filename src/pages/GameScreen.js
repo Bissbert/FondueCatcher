@@ -3,15 +3,19 @@ import { Button, View } from 'react-native';
 import { colors } from '../colors';
 import { GameEngine } from 'react-native-game-engine';
 import PointCounter from '../components/PointCounter';
+import PointManagement from '../logic/PointManagement';
 
 export default class GameScreen extends Component<{
   setBackground: (color: string) => void,
 }> {
+  pointManagement;
+
   constructor(props) {
     super(props);
+    this.pointManagement = new PointManagement(this.setState.bind(this));
     this.state = {
       running: true,
-      points: 0,
+      points: this.pointManagement.points,
     };
   }
 
@@ -31,7 +35,11 @@ export default class GameScreen extends Component<{
     if (!amount || isNaN(amount)) {
       amount = 1;
     }
-    this.setState({ points: this.state.points + amount });
+    this.pointManagement.incrementPoints(amount);
+  };
+
+  resetPoints = () => {
+    this.pointManagement.resetPoints();
   };
 
   componentDidMount() {
