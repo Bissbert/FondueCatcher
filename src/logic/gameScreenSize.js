@@ -1,5 +1,5 @@
-let gameScreenWidth = 0;
-let gameScreenHeight = 0;
+let gameScreenWidth = NaN;
+let gameScreenHeight = NaN;
 
 const getGameScreenWidth = () => gameScreenWidth;
 

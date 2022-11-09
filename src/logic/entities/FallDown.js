@@ -13,7 +13,10 @@ const FallDown = entities => {
       console.log(key, entities[key]);
 
       //check if entity is out of bounds
-      if (entity.position[1] > getGameScreenHeight() - 100) {
+      if (
+        !isNaN(getGameScreenHeight()) &&
+        entity.position[1] > getGameScreenHeight() - 100
+      ) {
         delete entities[key];
       }
     }
