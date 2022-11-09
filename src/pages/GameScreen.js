@@ -6,7 +6,12 @@ import PointCounter from '../components/PointCounter';
 import PointManagement from '../logic/PointManagement';
 import { MovePot } from '../logic/entities/PotMovement';
 import Pot, { POT_RADIUS } from '../components/entities/Pot';
-import { setGameScreenSize } from '../logic/gameScreenSize';
+import {
+  setGameScreenHeight,
+  setGameScreenWidth,
+} from '../logic/gameScreenSize';
+import { FallDown } from '../logic/entities/FallDown';
+import FallingBread from '../components/entities/FallingBread';
 
 export default class GameScreen extends Component<{
   setBackground: (color: string) => void,
@@ -32,17 +37,26 @@ export default class GameScreen extends Component<{
         <View
           style={styles.gameContainer}
           onLayout={event => {
-            const { width } = event.nativeEvent.layout;
-            setGameScreenSize(width);
+            const { width, height } = event.nativeEvent.layout;
+            setGameScreenWidth(width);
+            setGameScreenHeight(height);
           }}>
           <GameEngine
             style={styles.gameContainer}
-            systems={[MovePot]}
+            systems={[MovePot, FallDown]}
             entities={{
               pot: {
                 position: [100, 100],
                 radius: POT_RADIUS,
                 renderer: <Pot />,
+              },
+              bread1: {
+                position: [100, 200],
+                renderer: <FallingBread />,
+              },
+              bread2: {
+                position: [50, 200],
+                renderer: <FallingBread />,
               },
             }}
             running={this.state.running}

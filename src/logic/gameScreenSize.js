@@ -1,10 +1,23 @@
-let gameScreenSize = 0;
+let gameScreenWidth = NaN;
+let gameScreenHeight = NaN;
 
-const getGameScreenSize = () => gameScreenSize;
+const getGameScreenWidth = () => gameScreenWidth;
 
-const setGameScreenSize = (size: number) => {
+const getGameScreenHeight = () => gameScreenHeight;
+
+const setGameScreenWidth = (size: number) => {
   console.log('setGameScreenSize', size);
-  gameScreenSize = size;
+  gameScreenWidth = size;
 };
 
-export { getGameScreenSize, setGameScreenSize };
+const setGameScreenHeight = (size: number) => {
+  console.log('setGameScreenHeight', size);
+  gameScreenHeight = size;
+};
+
+export {
+  getGameScreenWidth,
+  setGameScreenWidth,
+  getGameScreenHeight,
+  setGameScreenHeight,
+};
