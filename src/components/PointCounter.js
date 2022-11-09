@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import {
+  Falsy,
+  RecursiveArray,
+  RegisteredStyle,
+  Text,
+  View,
+  ViewStyle,
+} from 'react-native';
 import { colors } from '../colors';
 
 export default class PointCounter extends Component<{
