@@ -1,25 +1,39 @@
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 
-const RADIUS = 20;
+const BOTTOM = 100;
+const POT_RADIUS = 30;
 
 export default class Pot extends PureComponent<{
-  position: [number, number],
+  position?: [number],
+  radius?: number,
 }> {
   render() {
-    const x = this.props.position[0] - RADIUS / 2;
-    const y = this.props.position[1] - RADIUS / 2;
-    return <View style={[styles.potStyle, { left: x, bottom: 100 }]} />;
+    const x = this.props.position[0] - this.props.radius / 2;
+    return <View style={[styles.potStyle, { left: x, bottom: BOTTOM }]} />;
   }
 }
+
+const getRadius = () => POT_RADIUS / 2;
+
+export { getRadius, POT_RADIUS };
 
 const styles = {
   potStyle: {
     position: 'absolute',
-    width: RADIUS * 2,
-    height: RADIUS * 2,
-    borderBottomLeftRadius: RADIUS * 2,
-    borderBottomRightRadius: RADIUS * 2,
-    backgroundColor: 'green',
+    width: POT_RADIUS * 2,
+    height: POT_RADIUS * 2,
+    borderBottomLeftRadius: POT_RADIUS * 2,
+    borderBottomRightRadius: POT_RADIUS * 2,
+    backgroundColor: '#9fff36',
+    //border shadow
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 1,
+    //border
+    borderWidth: 1,
+    borderColor: '#8bde2f',
   },
 };

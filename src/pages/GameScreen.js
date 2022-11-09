@@ -5,7 +5,8 @@ import { GameEngine } from 'react-native-game-engine';
 import PointCounter from '../components/PointCounter';
 import PointManagement from '../logic/PointManagement';
 import { MovePot } from '../logic/entities/PotMovement';
-import Pot from '../components/entities/Pot';
+import Pot, { POT_RADIUS } from '../components/entities/Pot';
+import { setGameScreenSize } from '../logic/gameScreenSize';
 import { FallDown } from '../logic/entities/FallDown';
 import FallingBread from '../components/entities/FallingBread';
 
@@ -30,22 +31,29 @@ export default class GameScreen extends Component<{
           points={this.state.points}
           style={styles.pointContainer}
         />
-        <GameEngine
+        <View
           style={styles.gameContainer}
-          systems={[MovePot, FallDown]}
-          entities={{
-            pot: { position: [100], renderer: <Pot /> },
+          onLayout={event => {
+            const { width } = event.nativeEvent.layout;
+            setGameScreenSize(width);
+          }}>
+          <GameEngine
+            style={styles.gameContainer}
+            systems={[MovePot, FallDown]}
+            entities={{
+              pot: {
+                position: [100, 100],
+                radius: POT_RADIUS,
+                renderer: <Pot />,
+              },
             bread1: {
-              position: [50, 100],
-              renderer: <FallingBread />,
-            },
-            bread2: {
               position: [100, 200],
               renderer: <FallingBread />,
             },
-          }}
-          running={this.state.running}
-        />
+            }}
+            running={this.state.running}
+          />
+        </View>
       </View>
     );
   }
