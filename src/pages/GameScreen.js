@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Button, View } from 'react-native';
+import { View } from 'react-native';
 import { colors } from '../colors';
 import { GameEngine } from 'react-native-game-engine';
 import PointCounter from '../components/PointCounter';
 import PointManagement from '../logic/PointManagement';
+import { MovePot } from '../logic/entities/PotMovement';
+import Pot from '../components/entities/Pot';
 import { FallDown } from '../logic/entities/FallDown';
 import { FallingBread } from '../components/entities/FallingBread';
 
@@ -30,14 +32,12 @@ export default class GameScreen extends Component<{
         />
         <GameEngine
           style={styles.gameContainer}
-          systems={[FallDown]}
+          systems={[MovePot,FallDown]}
           entities={{
+            pot: { position: [100], renderer: <Pot /> },
             1: { position: [40, 200], renderer: <FallingBread /> },
-            2: { position: [40, 200], renderer: <FallingBread /> },
-            3: { position: [40, 200], renderer: <FallingBread /> },
-            4: { position: [40, 200], renderer: <FallingBread /> },
-            5: { position: [40, 200], renderer: <FallingBread /> },
           }}
+          running={this.state.running}
         />
       </View>
     );
