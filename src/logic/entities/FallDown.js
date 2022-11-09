@@ -2,11 +2,10 @@ import { getGameScreenHeight } from '../gameScreenSize';
 
 const FallDown = entities => {
   const keys = Object.keys(entities);
-  //remove pot from keys
-  const potIndex = keys.indexOf('pot');
-  keys.splice(potIndex, 1);
+  // get keys containing "bread" in the name
+  const breadKeys = keys.filter(key => key.includes('bread'));
 
-  keys.forEach(key => {
+  breadKeys.forEach(key => {
     const entity = entities[key];
     if (entity && entity.position) {
       entity.position = [entity.position[0], entity.position[1] + 1];
