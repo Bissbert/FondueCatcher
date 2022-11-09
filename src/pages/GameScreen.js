@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Button, View } from 'react-native';
+import { View } from 'react-native';
 import { colors } from '../colors';
 import { GameEngine } from 'react-native-game-engine';
 import PointCounter from '../components/PointCounter';
 import PointManagement from '../logic/PointManagement';
+import { MovePot } from '../logic/entities/PotMovement';
+import Pot from '../components/entities/Pot';
 
 export default class GameScreen extends Component<{
   setBackground: (color: string) => void,
@@ -26,7 +28,14 @@ export default class GameScreen extends Component<{
           points={this.state.points}
           style={styles.pointContainer}
         />
-        <GameEngine style={styles.gameContainer} systems={[]} entities={{}} />
+        <GameEngine
+          style={styles.gameContainer}
+          systems={[MovePot]}
+          entities={{
+            pot: { position: [100], renderer: <Pot /> },
+          }}
+          running={this.state.running}
+        />
       </View>
     );
   }
