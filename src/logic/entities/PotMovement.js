@@ -17,12 +17,12 @@ const MovePot = (entities, { touches }) => {
 const updatePot = (pot, t) => {
   const newPos = pot.position[0] + t.delta.pageX;
   if (newPos >= getPotWidth()) {
-    if (newPos >= getGameScreenWidth() - getPotWidth() * 3) {
+    if (newPos >= getGameScreenWidth() - getPotWidth()) {
       console.log(
         'is greater than game screen size, so set to game screen size:',
-        getGameScreenWidth() - getPotWidth() * 3,
+        getGameScreenWidth() - getPotWidth(),
       );
-      pot.position[0] = getGameScreenWidth() - getPotWidth() * 3;
+      pot.position[0] = getGameScreenWidth() - getPotWidth();
     } else {
       console.log('moving pot from', pot.position[0], 'to', newPos);
       pot.position = [newPos];
