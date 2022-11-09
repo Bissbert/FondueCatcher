@@ -5,6 +5,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 let nextSummonTime: number;
 
+//times for summoning in milliseconds
+const TIME_MIN = 1000;
+const TIME_MAX = 4000;
+
 const SummonService = entities => {
   //if no summon time or time is reached, summon a new enemy
   if (!nextSummonTime || nextSummonTime < new Date().getTime()) {
@@ -27,7 +31,8 @@ const SummonService = entities => {
 
 const resetSummonTime = () => {
   //set the new summon time to be a random number between 1 and 4 seconds
-  nextSummonTime = Date.now() + Math.random() * 3000 + 1000;
+  nextSummonTime =
+    Date.now() + Math.random() * (TIME_MAX - TIME_MIN) + TIME_MIN;
 };
 
 export default SummonService;
