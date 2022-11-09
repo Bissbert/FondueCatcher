@@ -60,7 +60,6 @@ export default class Content extends Component<{
         break;
       default:
         this.content = <Home setPage={this.props.setPage} />;
-        setBackMark(false);
         break;
     }
   };
