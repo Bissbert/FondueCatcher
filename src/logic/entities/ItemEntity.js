@@ -4,10 +4,12 @@ import { PureComponent } from 'react';
 class Entity {
   position: [number, number];
   renderer: PureComponent;
+  id: string;
 
-  constructor(position: [number, number], renderer: PureComponent) {
+  constructor(id: string, position: [number, number], renderer: PureComponent) {
     this.position = position;
     this.renderer = renderer;
+    this.id = id;
   }
 }
 
@@ -17,13 +19,14 @@ class ItemEntity extends Entity {
   itemType: ItemType;
 
   constructor(
+    id: string,
     position: [number, number],
     renderer: FallingItem,
     radius: number,
     velocity: number,
     itemType: ItemType,
   ) {
-    super(position, renderer);
+    super(id, position, renderer);
     this.radius = radius;
     this.velocity = velocity;
     this.itemType = itemType;

@@ -8,7 +8,7 @@ let nextSummonTime: number;
 
 //times for summoning in milliseconds
 const TIME_MIN = 1000;
-const TIME_MAX = 4000;
+const TIME_MAX = 3000;
 
 /**
  * service to summon items
@@ -19,7 +19,7 @@ const SummonService = entities => {
   //if no summon time or time is reached, summon a new enemy
   if (!nextSummonTime || nextSummonTime < new Date().getTime()) {
     const id = uuidv4();
-    entities[id] = generateEntity();
+    entities[id] = generateEntity(id);
     console.log('summoned item', entities[id]);
     resetSummonTime();
   }
@@ -33,7 +33,7 @@ const SummonService = entities => {
  */
 function randomItemType() {
   const random = Math.random();
-  if (random < 0.8) {
+  if (random < 0.7) {
     return itemTypes.bread;
   } else {
     return itemTypes.fork;
@@ -42,9 +42,10 @@ function randomItemType() {
 
 /**
  * function that generates a new entity
+ * @param id the id of the entity
  * @returns {ItemEntity}
  */
-const generateEntity = () => {
+const generateEntity = (id: string) => {
   //random position from 0 + FALLING_RADIUS to the screen width - FALLING_RADIUS
   const x =
     Math.floor(Math.random() * (getGameScreenWidth() - FALLING_RADIUS * 2)) +
@@ -52,6 +53,7 @@ const generateEntity = () => {
   const y = 120;
   const position = [x, y];
   return new ItemEntity(
+    id,
     position,
     <FallingItem />,
     FALLING_RADIUS,
@@ -73,7 +75,7 @@ const resetSummonTime = () => {
  * @returns {number}
  */
 const randomVelocity = () => {
-  return Math.random() * 0.3 + 1;
+  return Math.random() * 0.3 + 1.2;
 };
 
 export default SummonService;
